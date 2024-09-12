@@ -1,8 +1,8 @@
 import React from 'react'
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export const IconEdit = () => {
     return (
-        <Icon name='ellipsis-vertical' style={{ fontSize: 23 }} />
+        <Icon name='pencil' style={{ fontSize: 25, color: '#007AFF' }} />
     )
 }

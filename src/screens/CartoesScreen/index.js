@@ -1,64 +1,89 @@
 import React, { useState, useCallback } from 'react';
-import axios from 'axios';
-import { ScrollView } from 'react-native';
+import { ScrollView, TouchableWithoutFeedback, Keyboard, RefreshControl } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import DropShadow from 'react-native-drop-shadow';
 
 import { Text, Container } from '../../components';
 import { CardSection, SubmitButton } from '../../components/organisms';
-import { API_URL } from '../../helpers/config';
+import API from '../../helpers/api';
 
 export const CartoesScreen = ({ navigation }) => {
-
   const [cartoes, setCartoes] = useState([]);
+  const [resetCard, setResetCard] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const fetchCartoes = async () => {
+    try {
+      const response = await API.get(`/cartoes`);
+      if (Array.isArray(response.data)) {
+
+        setCartoes(response.data);
+      } else {
+        setCartoes([]);
+      }
+    } catch (error) {
+      console.error('Erro ao retornar a lista de cartões:', error.response ? error.response.data : error.message);
+    }
+  };
+
+
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    await fetchCartoes();
+    setRefreshing(false);
+  }, []);
 
   useFocusEffect(
     useCallback(() => {
-      const fetchCartoes = async () => {
-        try {
-          const response = await axios.get(`${API_URL}/cartoes`);
-          setCartoes(response.data);
-        } catch (error) {
-          console.error('Erro ao retornar a lista de cartões', error);
-        }
-      };
-
       fetchCartoes();
     }, [])
   );
+
+  const handleOutsidePress = () => {
+    setResetCard(true);
+    setTimeout(() => setResetCard(false), 100);
+    Keyboard.dismiss();
+  };
 
 
 
 
   return (
-
     <>
-      <ScrollView>
-        <Container padTop="40" align="center" padBottom='50' radius='12'>
-          <Text color="black" size="35" fontFamily="RobotoBold">Cartões</Text>
+      <ScrollView refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
+        <TouchableWithoutFeedback onPress={handleOutsidePress}>
+          <Container padTop="40" align="center" padBottom="50" radius="12">
+            <Text color="black" size="35" fontFamily="RobotoBold">Cartões</Text>
 
-          {cartoes.map((cartao) => (
-            <CardSection key={cartao.id} nome={cartao.nome} />
-          ))}
+            {/* Verificação se cartoes é um array antes de usar map */}
+            {Array.isArray(cartoes) && cartoes.length > 0 ? (
+              cartoes.map((cartao) => (
+                <CardSection key={cartao.id} cartaoId={cartao.id} nome={cartao.nome} onReset={resetCard} onRefresh={onRefresh} />
+              ))
+            ) : (
+              <Text marginTop='30' color="gray" size="18">Nenhum cartão disponível</Text> // Exibe mensagem caso a lista esteja vazia
+            )}
+          </Container>
+        </TouchableWithoutFeedback>
 
-        </Container>
+        <DropShadow
+          style={{
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 2,
+              height: 4,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 5,
+            borderRadius: 10,
+          }}
+        >
+          {/* Add content inside DropShadow if needed */}
+        </DropShadow>
       </ScrollView>
-      <DropShadow
-        style={{
-          shadowColor: "#000",
-          shadowOffset: {
-            width: 2,
-            height: 4,
-          },
-          shadowOpacity: 0.25,
-          shadowRadius: 5,
-          borderRadius: 10,
-        }}
-      >
-        <SubmitButton navigation={navigation} />
-      </DropShadow>
-
+      <SubmitButton navigation={navigation} />
     </>
-
   );
-}
+};

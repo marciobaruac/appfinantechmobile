@@ -4,10 +4,9 @@ import styled from "styled-components/native";
 export const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        // borderWidth: 2,
         justifyContent: "space-between",
         width: 307,
-        marginLeft: 20
+        marginLeft: 20,
     }
 })
 
