@@ -1,3 +1,5 @@
-
-export const API_URL = 'Adicione a url e a porta configurada no laravel (http://0.0.0.0:0000).'
-'OBS. IP nativo do laravel (127.0.0.1) não funciona. Use o da maquina que está executando o servidor.'
+// export const API_URL = 'http://172.20.10.11:8000';
+//  export const API_URL = 'http://172.16.108.115:8000';
+// export const API_URL = 'http://10.27.201.206:8000';
+// export const API_URL = 'http://192.168.1.14:8000';
+export const API_URL = 'http://10.20.4.25:8000';

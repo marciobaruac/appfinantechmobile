@@ -8,7 +8,7 @@ export const Routes = () => {
     const Stack = createNativeStackNavigator()
 
     return (
-        <NavigationContainer>
+        <NavigationContainer >
             <Stack.Navigator screenOptions={{ headerShown: false }}>
                 <Stack.Screen name='Splash' component={SplashScreen} />
                 <Stack.Screen name='Cartoes' component={CartoesScreen} />

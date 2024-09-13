@@ -7,4 +7,5 @@ export const CustomText = styled.Text`
     text-align: ${({ align }) => align || 'start'};
     line-height: ${({ lineHeight }) => lineHeight || 0}px;
     margin-top: ${({ theme, marginTop }) => theme.metrics.px(marginTop || 0)}px;
+    margin-left: ${({ theme, marginLeft }) => theme.metrics.px(marginLeft || 0)}px;
 `

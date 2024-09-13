@@ -74,14 +74,14 @@ export const CardSection = ({ cartaoId, nome, onReset, onRefresh }) => {
 
                                 <TouchableOpacity activeOpacity={0.8} onPress={handlePress}>
                                     {nome.length < 16 ? (
-                                        <Text fontFamily="RobotoBold" color="black" lineHeight="50" size="20"> {nome} </Text>
+                                        <Text fontFamily="RobotoMedium" color="black" lineHeight="50" size="20"> {nome} </Text>
                                     ) : (
                                         isEffect ? (
                                             <MarqueeText marqueeOnStart={true} spacing={200} speed={0.7}>
-                                                <Text fontFamily="RobotoBold" color="black" lineHeight="50" size="20"> {nome} </Text>
+                                                <Text fontFamily="RobotoMedium" color="black" lineHeight="50" size="20"> {nome} </Text>
                                             </MarqueeText>
                                         ) : (
-                                            <Text fontFamily="RobotoBold" color="black" lineHeight="50" size="20">
+                                            <Text fontFamily="RobotoMedium" color="black" lineHeight="50" size="20">
                                                 {truncateText(nome, 16)}
                                             </Text>
                                         )

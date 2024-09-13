@@ -2,13 +2,13 @@ import styled from "styled-components/native";
 
 export const Container = styled.View`
     
-
     /* Dinamics Styles */
     display: ${({ display }) => display || 'flex'};
     position: ${({ position }) => position || 'fixed'};
     left: ${({ left, theme }) => theme.metrics.px(left || 0)}px;
     padding-top: ${({ padTop, theme }) => theme.metrics.px(padTop || 0)}px;
     padding-bottom: ${({ padBottom, theme }) => theme.metrics.px(padBottom || 0)}px;
+    padding-left: ${({ padLeft, theme }) => theme.metrics.px(padLeft || 0)}px;
     margin-top: ${({ marginTop, theme }) => theme.metrics.px(marginTop || 0)}px;
     margin-left: ${({ marginLeft, theme }) => theme.metrics.px(marginLeft || 0)}px;
     flex-direction: ${({ flexDir }) => flexDir || 'column'};

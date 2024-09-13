@@ -35,7 +35,10 @@ export const CartoesScreen = ({ navigation }) => {
 
   useFocusEffect(
     useCallback(() => {
-      fetchCartoes();
+      const refreshOnFocus = async () => {
+        await fetchCartoes();
+      };
+      refreshOnFocus();
     }, [])
   );
 
@@ -54,8 +57,11 @@ export const CartoesScreen = ({ navigation }) => {
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
         <TouchableWithoutFeedback onPress={handleOutsidePress}>
-          <Container padTop="40" align="center" padBottom="50" radius="12">
-            <Text color="black" size="35" fontFamily="RobotoBold">Cartões</Text>
+          <Container align="center" padBottom="50" radius="12">
+            <Container align='center' justify='center' height='142' bgColor='#0F1B28'>
+              <Text marginTop='20' size="35" fontFamily="RobotoBold">Cartões</Text>
+            </Container>
+
 
             {/* Verificação se cartoes é um array antes de usar map */}
             {Array.isArray(cartoes) && cartoes.length > 0 ? (

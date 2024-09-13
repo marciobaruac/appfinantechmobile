@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, TouchableWithoutFeedback, Keyboard, Alert, Image } from 'react-native';
+import { TouchableWithoutFeedback, Keyboard, Alert, Image } from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
 import API from '../../helpers/api';
 
 import { Container, Text, ButtonBack } from '../../components';
-import { styles, Input, ButtonAdd } from './styles';
+import { Input, ButtonAdd } from './styles';
 
 export const CreateScreen = ({ route, navigation }) => {
     const { cartaoId } = route.params || {};
@@ -91,13 +91,13 @@ export const CreateScreen = ({ route, navigation }) => {
     };
 
     return (
-        <Container padTop='35'>
-            <View style={styles.container}>
+        <Container >
+            <Container flexDir='row' bgColor='#0F1B28' height='142' align='center' padLeft='10'>
                 <ButtonBack onPress={() => navigation.navigate('Cartoes')} />
-                <Text size='32' color='black' fontFamily='RobotoBold'>
+                <Text marginLeft='38' size='32' fontFamily='RobotoBold'>
                     {isEditing ? 'Editar Cartão' : 'Novo Cartão'}
                 </Text>
-            </View>
+            </Container>
 
             <TouchableWithoutFeedback onPress={dismissKeyboard}>
                 <>
