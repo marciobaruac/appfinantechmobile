@@ -3,8 +3,8 @@ import { CustomImages } from './styles'
 import logoImage from '../../../../assets/Logo.png'
 
 
-export const Logo = ({ size }) => {
+export const Logo = ({ size, marginTop }) => {
   return (
-    <CustomImages source={logoImage} size={size} />
+    <CustomImages source={logoImage} size={size} marginTop={marginTop} />
   )
 } 

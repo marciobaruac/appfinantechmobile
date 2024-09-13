@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { ScrollView, TouchableWithoutFeedback, Keyboard, RefreshControl } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
-import DropShadow from 'react-native-drop-shadow';
 
 import { Text, Container } from '../../components';
 import { CardSection, SubmitButton } from '../../components/organisms';
@@ -62,8 +61,6 @@ export const CartoesScreen = ({ navigation }) => {
               <Text marginTop='20' size="35" fontFamily="RobotoBold">Cartões</Text>
             </Container>
 
-
-            {/* Verificação se cartoes é um array antes de usar map */}
             {Array.isArray(cartoes) && cartoes.length > 0 ? (
               cartoes.map((cartao) => (
                 <CardSection key={cartao.id} cartaoId={cartao.id} nome={cartao.nome} onReset={resetCard} onRefresh={onRefresh} />
@@ -74,20 +71,7 @@ export const CartoesScreen = ({ navigation }) => {
           </Container>
         </TouchableWithoutFeedback>
 
-        <DropShadow
-          style={{
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 2,
-              height: 4,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 5,
-            borderRadius: 10,
-          }}
-        >
-          {/* Add content inside DropShadow if needed */}
-        </DropShadow>
+
       </ScrollView>
       <SubmitButton navigation={navigation} />
     </>

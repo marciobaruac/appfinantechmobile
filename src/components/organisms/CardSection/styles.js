@@ -1,8 +1,9 @@
 import styled from "styled-components/native";
+import { StyleSheet } from "react-native";
 import { Marquee } from "@animatereactnative/marquee";
 
 export const CardBox = styled.View`
-    border: solid 1px;
+    border-width: 1px;
     border-color: #E3E3E3;
     border-radius: 18px;
     flex-direction: row;
@@ -12,9 +13,24 @@ export const CardBox = styled.View`
     align-items: ${({ align }) => align || 'flex-start'};
     justify-content: ${({ justify }) => justify || 'flex-start'};
     background-color: ${({ bgColor }) => bgColor || 'white'};
-`
+`;
 
 export const MarqueeText = styled(Marquee)`
-    
     width: 220px;
-`
+`;
+
+export const Shadow = StyleSheet.create(
+    {
+        card: {
+            shadowColor: "#000",
+            shadowOffset: {
+                width: 2,
+                height: 4,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 5,
+            borderRadius: 10,
+            elevation: 6
+        }
+    }
+)

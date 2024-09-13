@@ -7,14 +7,28 @@ export const styles = StyleSheet.create({
         justifyContent: "space-between",
         width: 307,
         marginLeft: 20,
+    },
+    shadow: {
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 2,
+            height: 4,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 5,
+        borderRadius: 10,
+        elevation: 6
     }
 })
 
 export const Input = styled.TextInput`
     padding-left: 15px;
     padding-right: 15px;
-    width: 305px;
+    width: 307hpx;
     height: 58px;
+    
+
+    
 `
 
 export const ButtonAdd = styled.TouchableOpacity`
@@ -25,6 +39,5 @@ export const ButtonAdd = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
     margin-top: 80px;
-    margin-left: 75px;
     border-color: #e3e3e3;
 `

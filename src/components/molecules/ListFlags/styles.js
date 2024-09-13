@@ -9,20 +9,21 @@ export const styles = StyleSheet.create({
         borderRadius: 15,
         backgroundColor: 'white',
         alignItems: 'center',
-        marginRight: 5
+        marginRight: 5,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 2,
+            height: 4,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 5,
+        borderRadius: 10,
+        elevation: 6
+
     },
     item: {
         alignItems: 'center',
         paddingVertical: 10,
-    },
-    shadow: {
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 3,
-            height: 4,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 5,
-
     }
 })

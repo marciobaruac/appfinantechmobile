@@ -14,24 +14,21 @@ export const ButtonEdit = ({ cartaoId }) => {
     };
 
     return (
-        <DropShadow
-            style={{
+        <TouchableOpacity onPress={handlePress} activeOpacity={0.5} >
+            <Container height='40' width='40' justify='center' align='center' radius='10' style={{
                 shadowColor: "#000",
                 shadowOffset: {
                     width: 2,
-                    height: 5,
+                    height: 4,
                 },
-                shadowOpacity: 0.2,
+                shadowOpacity: 0.25,
                 shadowRadius: 5,
-                elevation: 5
-            }}
-        >
-            <TouchableOpacity onPress={handlePress} activeOpacity={0.5} >
-                <Container height='40' width='40' justify='center' align='center' radius='10'>
-                    <IconEdit />
-                </Container>
-            </TouchableOpacity>
-        </DropShadow>
+                borderRadius: 10,
+                elevation: 6
+            }}>
+                <IconEdit />
+            </Container>
+        </TouchableOpacity>
 
 
     );

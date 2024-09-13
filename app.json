@@ -2,6 +2,11 @@
   "expo": {
     "name": "appfinantechmobile",
     "slug": "appfinantechmobile",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "extra": {
+      "eas": {
+        "projectId": "0a180fbb-18f3-4ecd-a9a7-25da4c593d97"
+      }
+    }
   }
 }

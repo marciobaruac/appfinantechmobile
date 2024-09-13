@@ -14,10 +14,10 @@ export const SplashScreen = ({ navigation }) => {
     <Container justify="center" align="center" bgColor="#0F1B28">
       <Logo size="150" />
 
-      <Text size="30" fontFamily="LatoBold">
+      <Text marginTop='7' size="30" fontFamily="LatoBold">
         Smart
 
-        <Text size="30" fontFamily="LatoLight">
+        <Text size="30" marginTop='7' fontFamily="LatoLight">
           Finantech
 
         </Text>

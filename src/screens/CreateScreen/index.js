@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { TouchableWithoutFeedback, Keyboard, Alert, Image } from 'react-native';
-import DropShadow from 'react-native-drop-shadow';
 import API from '../../helpers/api';
 
-import { Container, Text, ButtonBack } from '../../components';
-import { Input, ButtonAdd } from './styles';
+import { Container, Text, ButtonBack, ImageCartao, Logo } from '../../components';
+import { Input, ButtonAdd, styles } from './styles';
 
 export const CreateScreen = ({ route, navigation }) => {
     const { cartaoId } = route.params || {};
@@ -101,35 +100,27 @@ export const CreateScreen = ({ route, navigation }) => {
 
             <TouchableWithoutFeedback onPress={dismissKeyboard}>
                 <>
-                    <Container align='center' padTop='80'>
-                        <DropShadow
-                            style={{
-                                shadowColor: "#000",
-                                shadowOffset: {
-                                    width: 2,
-                                    height: 4,
-                                },
-                                shadowOpacity: 0.25,
-                                shadowRadius: 5,
-                                borderRadius: 10,
-                                elevation: 5,
-                            }}
-                        >
-                            <Container width='305' height='58' justify='center' radius='15'>
-                                <Input
-                                    placeholder="Nome"
-                                    placeholderTextColor="grey"
-                                    value={cartao}
-                                    onChangeText={setCartao}
-                                />
-                            </Container>
+                    <Container align='center' padTop='50' >
+                        {/* DropShadow */}
+                        <Container width='305' height='58' justify='center' radius='15' style={styles.shadow}>
+                            <Input
 
-                            <ButtonAdd onPress={handleCreateOrEdit}>
-                                <Text fontFamily='RobotoBold' size='18'>
-                                    {isEditing ? 'Salvar Alterações' : 'Adicionar'}
-                                </Text>
-                            </ButtonAdd>
-                        </DropShadow>
+                                placeholder="Nome"
+                                placeholderTextColor="grey"
+                                value={cartao}
+                                onChangeText={setCartao}
+                            />
+                        </Container>
+
+                        <ButtonAdd onPress={handleCreateOrEdit}>
+                            <Text fontFamily='RobotoBold' size='18'>
+                                {isEditing ? 'Salvar Alterações' : 'Adicionar'}
+                            </Text>
+                        </ButtonAdd>
+
+                        <ImageCartao size='328' marginTop='10' />
+
+                        <Logo marginTop='30' />
                     </Container>
 
                 </>

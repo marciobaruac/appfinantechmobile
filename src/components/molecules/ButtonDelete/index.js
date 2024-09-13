@@ -41,19 +41,21 @@ export const ButtonDelete = ({ cartaoId, onRefresh }) => {
     };
 
     return (
-        <DropShadow
-            style={{
+
+        <TouchableOpacity onPress={handleDelete} activeOpacity={0.5}>
+            <Container height='40' width='40' justify='center' align='center' radius='10' marginLeft='10' style={{
                 shadowColor: "#000",
-                shadowOffset: { width: 2, height: 5 },
-                shadowOpacity: 0.2,
+                shadowOffset: {
+                    width: 2,
+                    height: 4,
+                },
+                shadowOpacity: 0.25,
                 shadowRadius: 5,
-            }}
-        >
-            <TouchableOpacity onPress={handleDelete} activeOpacity={0.5}>
-                <Container height='40' width='40' justify='center' align='center' radius='10' marginLeft='10'>
-                    <IconDelete />
-                </Container>
-            </TouchableOpacity>
-        </DropShadow>
+                borderRadius: 10,
+                elevation: 6
+            }}>
+                <IconDelete />
+            </Container>
+        </TouchableOpacity>
     );
 };

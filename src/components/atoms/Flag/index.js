@@ -14,6 +14,8 @@ const images = {
 }
 
 export const Flag = ({ type, ...props }) => {
+
+
   return (
     <CustomImages source={images[type]} {...props} />
   )
