@@ -23,7 +23,7 @@ export const ButtonDelete = ({ cartaoId, onRefresh }) => {
                         try {
                             console.log(cartaoId);
 
-                            const response = await API.get(`/cartoes/delete/${cartaoId}`);
+                            const response = await API.get(`/api/cartoes/delete/${cartaoId}`);
 
                             Alert.alert('Sucesso', 'Cartão deletado com sucesso.');
 

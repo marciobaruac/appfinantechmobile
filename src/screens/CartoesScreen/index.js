@@ -13,10 +13,10 @@ export const CartoesScreen = ({ navigation }) => {
 
   const fetchCartoes = async () => {
     try {
-      const response = await API.get(`/cartoes`);
-      if (Array.isArray(response.data)) {
+      const response = await API.get(`/api/cartoes`);
+      if (Array.isArray(response.data.cartoes)) {
 
-        setCartoes(response.data);
+        setCartoes(response.data.cartoes);
       } else {
         setCartoes([]);
       }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native'
-import DropShadow from 'react-native-drop-shadow';
 
 import { Container, IconEdit } from '../../atoms';
 import { useNavigation } from '@react-navigation/native';

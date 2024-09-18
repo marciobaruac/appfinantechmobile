@@ -7,24 +7,24 @@ import { API_URL } from '../../helpers/config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const LoginScreen = ({ navigation }) => {
-    const [username, setUsername] = useState('');
+    const [email, setemail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = async () => {
-        if (!username || !password) {
+        if (!email || !password) {
             Alert.alert('Erro', 'Por favor, preencha todos os campos.');
             return;
         }
 
         try {
-            const response = await API.post(`${API_URL}/login/request`, {
-                login: username,
-                senha: password,
+            const response = await API.post(`${API_URL}/api/users/login`, {
+                email: email,
+                password: password,
             });
 
             if (response.data.token) {
                 await AsyncStorage.setItem('token', response.data.token)
-                await AsyncStorage.setItem('csrfToken', response.data.csrf_token || '')
+
 
                 // Login bem-sucedido, navega para a próxima tela
                 navigation.reset({
@@ -55,10 +55,10 @@ export const LoginScreen = ({ navigation }) => {
             <Container align="center" justify="center" bgColor="#0F1B28">
                 <TextInput
                     style={styles.input}
-                    placeholder="Username"
+                    placeholder="E-mail"
                     placeholderTextColor="gray"
-                    value={username}
-                    onChangeText={setUsername}
+                    value={email}
+                    onChangeText={setemail}
                 />
                 <TextInput
                     style={styles.input}

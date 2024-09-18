@@ -9,15 +9,15 @@ import { CardOptions } from '../CardOptions';
 
 export const CardSection = ({ cartaoId, nome, onReset, onRefresh }) => {
     const [isEffect, setIsEffect] = useState(false);
-    const [showOptions, setShowOptions] = useState(false); // Estado para controlar a visibilidade do CardOptions
-    const moveEffect = useSharedValue(0); // Shared value para controlar o movimento
+    const [showOptions, setShowOptions] = useState(false);
+    const moveEffect = useSharedValue(0);
 
     useEffect(() => {
         if (onReset) {
-            moveEffect.value = withTiming(0); // Reseta o CardBox para a posição original
+            moveEffect.value = withTiming(0);
 
             setTimeout(() => {
-                setShowOptions(false); // Oculta o CardOptions quando resetar
+                setShowOptions(false);
             }, 10);
         }
     }, [onReset]);
@@ -79,7 +79,7 @@ export const CardSection = ({ cartaoId, nome, onReset, onRefresh }) => {
                         </Container>
 
                         <Container flexDir="row" align="center" radius="12" height="40" width="30">
-                            {/* Passando o evento para o ButtonEdit */}
+
                             <ButtonOption onPress={handleOptionPress} />
                         </Container>
                     </CardBox>

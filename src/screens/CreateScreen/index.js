@@ -20,8 +20,8 @@ export const CreateScreen = ({ route, navigation }) => {
 
     const fetchCartaoData = async (id) => {
         try {
-            const response = await API.get(`/cartoes/edit/${id}`);
-            setCartao(response.data.nome);
+            const response = await API.get(`/api/cartoes/edit/${id}`);
+            setCartao(response.data.response.nome);
         } catch (error) {
             console.error('Erro ao buscar os dados do cartão:', error);
             Alert.alert('Erro', 'Não foi possível carregar os dados do cartão.');
@@ -38,7 +38,7 @@ export const CreateScreen = ({ route, navigation }) => {
         const axiosPut = async () => {
             try {
 
-                await API.put(`/cartoes/update/${cartaoId}`, { nome: cartao });
+                await API.put(`/api/cartoes/update/${cartaoId}`, { nome: cartao });
 
             } catch (error) {
                 return Alert.alert('Erro', 'Nome do cartão já existe')
@@ -55,7 +55,7 @@ export const CreateScreen = ({ route, navigation }) => {
             }
 
             if (!isEditing) {
-                await API.post(`/cartoes/create`, { nome: cartao });
+                await API.post(`/api/cartoes/create`, { nome: cartao });
                 Alert.alert('Sucesso', 'Cartão criado com sucesso.');
 
                 navigation.navigate('Cartoes', { shouldRefresh: true });
@@ -101,7 +101,7 @@ export const CreateScreen = ({ route, navigation }) => {
             <TouchableWithoutFeedback onPress={dismissKeyboard}>
                 <>
                     <Container align='center' padTop='50' >
-                        {/* DropShadow */}
+
                         <Container width='305' height='58' justify='center' radius='15' style={styles.shadow}>
                             <Input
 
