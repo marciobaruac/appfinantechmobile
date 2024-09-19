@@ -14,7 +14,7 @@ export const ButtonEdit = ({ cartaoId }) => {
 
     return (
         <TouchableOpacity onPress={handlePress} activeOpacity={0.5} >
-            <Container height='40' width='40' justify='center' align='center' radius='10' style={{
+            <Container height='73' width='40' justify='center' align='center' radius='10' style={{
                 shadowColor: "#000",
                 shadowOffset: {
                     width: 2,

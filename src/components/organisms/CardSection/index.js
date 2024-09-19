@@ -54,7 +54,7 @@ export const CardSection = ({ cartaoId, nome, onReset, onRefresh }) => {
                 >
                     <CardBox
                         width="300"
-                        height="70"
+                        height="75"
                         align="center"
                         style={Shadow.card}
                     >
@@ -78,7 +78,7 @@ export const CardSection = ({ cartaoId, nome, onReset, onRefresh }) => {
                             </TouchableOpacity>
                         </Container>
 
-                        <Container flexDir="row" align="center" radius="12" height="40" width="30">
+                        <Container flexDir="row" align="center" radius="12" height="70" width="30">
 
                             <ButtonOption onPress={handleOptionPress} />
                         </Container>

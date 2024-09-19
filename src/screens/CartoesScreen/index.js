@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { ScrollView, TouchableWithoutFeedback, Keyboard, RefreshControl } from 'react-native';
+import { ScrollView, TouchableWithoutFeedback, Keyboard, RefreshControl, Platform } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 
 import { Text, Container } from '../../components';
@@ -56,9 +56,9 @@ export const CartoesScreen = ({ navigation }) => {
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
         <TouchableWithoutFeedback onPress={handleOutsidePress}>
-          <Container align="center" padBottom="50" radius="12">
-            <Container align='center' justify='center' height='142' bgColor='#0F1B28'>
-              <Text marginTop='20' size="35" fontFamily="RobotoBold">Cartões</Text>
+          <Container align="center" padBottom="80" radius="12">
+            <Container align='center' justify='center' height={Platform.OS === 'ios' ? 25 : 20} bgColor='#0F1B28'>
+              <Text size="35" marginTop={Platform.OS === 'ios' ? 15 : 0} fontFamily="RobotoBold">Cartões</Text>
             </Container>
 
             {Array.isArray(cartoes) && cartoes.length > 0 ? (

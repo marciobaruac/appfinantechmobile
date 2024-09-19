@@ -1,7 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Alert } from 'react-native';
 import API from '../../../helpers/api';
-import DropShadow from 'react-native-drop-shadow';
 
 import { Container, IconDelete } from '../../atoms';
 
@@ -43,7 +42,7 @@ export const ButtonDelete = ({ cartaoId, onRefresh }) => {
     return (
 
         <TouchableOpacity onPress={handleDelete} activeOpacity={0.5}>
-            <Container height='40' width='40' justify='center' align='center' radius='10' marginLeft='10' style={{
+            <Container height='73' width='40' justify='center' align='center' radius='10' marginLeft='10' style={{
                 shadowColor: "#000",
                 shadowOffset: {
                     width: 2,

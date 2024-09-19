@@ -31,6 +31,7 @@ export const Input = styled.TextInput`
     
 `
 
+
 export const ButtonAdd = styled.TouchableOpacity`
     width: 200px;
     height: 58px;
@@ -40,4 +41,5 @@ export const ButtonAdd = styled.TouchableOpacity`
     justify-content: center;
     margin-top: 80px;
     border-color: #e3e3e3;
+    elevation: 5;
 `

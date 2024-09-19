@@ -3,7 +3,6 @@ import { TextInput, Button, Alert, StyleSheet, Keyboard, TouchableWithoutFeedbac
 import API from '../../helpers/api';
 
 import { Container } from '../../components';
-import { API_URL } from '../../helpers/config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const LoginScreen = ({ navigation }) => {
@@ -17,7 +16,7 @@ export const LoginScreen = ({ navigation }) => {
         }
 
         try {
-            const response = await API.post(`${API_URL}/api/users/login`, {
+            const response = await API.post(`/api/users/login`, {
                 email: email,
                 password: password,
             });
@@ -26,7 +25,6 @@ export const LoginScreen = ({ navigation }) => {
                 await AsyncStorage.setItem('token', response.data.token)
 
 
-                // Login bem-sucedido, navega para a próxima tela
                 navigation.reset({
                     index: 0,
                     routes: [{ name: 'Cartoes' }]
