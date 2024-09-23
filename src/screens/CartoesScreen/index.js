@@ -13,7 +13,7 @@ export const CartoesScreen = ({ navigation }) => {
 
   const fetchCartoes = async () => {
     try {
-      const response = await API.get(`/api/cartoes`);
+      const response = await API.get('/api/cartoes');
       if (Array.isArray(response.data.cartoes)) {
 
         setCartoes(response.data.cartoes);
@@ -57,7 +57,7 @@ export const CartoesScreen = ({ navigation }) => {
       }>
         <TouchableWithoutFeedback onPress={handleOutsidePress}>
           <Container align="center" padBottom="80" radius="12">
-            <Container align='center' justify='center' height={Platform.OS === 'ios' ? 25 : 20} bgColor='#0F1B28'>
+            <Container align='center' justify='center' height={Platform.OS === 'ios' ? 85 : 80} bgColor='#0F1B28'>
               <Text size="35" marginTop={Platform.OS === 'ios' ? 15 : 0} fontFamily="RobotoBold">Cartões</Text>
             </Container>
 
@@ -66,7 +66,7 @@ export const CartoesScreen = ({ navigation }) => {
                 <CardSection key={cartao.id} cartaoId={cartao.id} nome={cartao.nome} onReset={resetCard} onRefresh={onRefresh} />
               ))
             ) : (
-              <Text marginTop='30' color="gray" size="18">Nenhum cartão disponível</Text> // Exibe mensagem caso a lista esteja vazia
+              <Text marginTop='30' color="gray" size="18">Nenhum cartão disponível</Text>
             )}
           </Container>
         </TouchableWithoutFeedback>

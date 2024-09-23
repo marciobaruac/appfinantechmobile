@@ -93,9 +93,9 @@ export const CreateScreen = ({ route, navigation }) => {
 
     return (
         <Container >
-            <Container flexDir='row' bgColor='#0F1B28' height={Platform.OS === 'ios' ? 14 : 11} align='center' padLeft='10'>
+            <Container flexDir='row' bgColor='#0F1B28' height={Platform.OS === 'ios' ? 85 : 80} align='center' padLeft='10'>
                 <ButtonBack onPress={() => navigation.navigate('Cartoes')} />
-                <Text marginLeft='38' marginTop={Platform.OS === 'ios' ? 20 : 0} size='32' fontFamily='RobotoBold'>
+                <Text marginLeft='38' marginTop={Platform.OS === 'ios' ? 50 : 0} size='32' fontFamily='RobotoBold'>
                     {isEditing ? 'Editar Cartão' : 'Novo Cartão'}
                 </Text>
             </Container>
@@ -104,7 +104,7 @@ export const CreateScreen = ({ route, navigation }) => {
                 <>
                     <Container align='center' padTop='50' >
 
-                        <Container width='305' height='7' justify='center' radius='15' style={styles.shadow}>
+                        <Container width='305' height='60' justify='center' radius='15' style={styles.shadow}>
                             <Input
 
                                 placeholder="Nome"
@@ -122,7 +122,7 @@ export const CreateScreen = ({ route, navigation }) => {
 
                         <ImageCartao size='328' marginTop='10' />
 
-                        <Logo marginTop='30' />
+                        <Logo marginTop='70' />
                     </Container>
 
                 </>

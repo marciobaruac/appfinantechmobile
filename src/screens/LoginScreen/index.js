@@ -22,6 +22,7 @@ export const LoginScreen = ({ navigation }) => {
             });
 
             if (response.data.token) {
+
                 await AsyncStorage.setItem('token', response.data.token)
 
 

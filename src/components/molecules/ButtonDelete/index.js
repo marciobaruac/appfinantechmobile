@@ -42,7 +42,7 @@ export const ButtonDelete = ({ cartaoId, onRefresh }) => {
     return (
 
         <TouchableOpacity onPress={handleDelete} activeOpacity={0.5}>
-            <Container height='73' width='40' justify='center' align='center' radius='10' marginLeft='10' style={{
+            <Container height='45' width='40' justify='center' align='center' radius='10' marginLeft='10' style={{
                 shadowColor: "#000",
                 shadowOffset: {
                     width: 2,

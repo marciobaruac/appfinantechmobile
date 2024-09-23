@@ -17,7 +17,7 @@ export const Container = styled.View`
     justify-content: ${({ justify }) => justify || 'flex-start'};
     background-color: ${({ bgColor }) => bgColor || 'white'};
     width: ${({ theme, width }) => (width ? `${theme.metrics.px(width)}px` : '100%')};
-    height: ${({ theme, height }) => (height ? `${theme.metrics.px(height)}%` : '100%')};
+    height: ${({ theme, height }) => (height ? `${theme.metrics.px(height)}px` : '100%')};
     border-radius: ${({ radius, theme }) => radius ? `${theme.metrics.px(radius)}px` : '0px'};
     
 
