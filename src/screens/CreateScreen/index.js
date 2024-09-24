@@ -67,16 +67,12 @@ export const CreateScreen = ({ route, navigation }) => {
 
 
         } catch (error) {
-            if (error.response && error.response.status === 422) {
-                const errors = error.response.data.errors;
-                let errorMessage = 'Erro ao salvar o cartão.';
+            if (error.response && error.response.status === 400) {
 
-                if (errors && errors.nome) {
-                    errorMessage = errors.nome[0];
-                }
-
-                Alert.alert('Erro', errorMessage);
+                Alert.alert('Erro', 'Já existe um cartão com este nome.');
             } else {
+                console.log(error.response.status);
+
                 Alert.alert('Erro', 'Ocorreu um erro inesperado.');
             }
 
