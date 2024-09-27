@@ -1,14 +1,17 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { CartoesScreen, Dashboard, LoginScreen, SplashScreen } from '../screens'
+import { CartoesScreen, Dashboard, LoginScreen, SplashScreen } from '../screens';
 import { CreateScreen } from '../screens/CreateScreen';
+import { createNavigationContainerRef } from '@react-navigation/native'; // Importe para criar a referência de navegação
+
+export const navigationRef = createNavigationContainerRef();
 
 export const Routes = () => {
-    const Stack = createNativeStackNavigator()
+    const Stack = createNativeStackNavigator();
 
     return (
-        <NavigationContainer >
+        <NavigationContainer ref={navigationRef}>
             <Stack.Navigator screenOptions={{ headerShown: false }}>
                 <Stack.Screen name='Splash' component={SplashScreen} />
                 <Stack.Screen name='Login' component={LoginScreen} />
@@ -17,5 +20,6 @@ export const Routes = () => {
                 <Stack.Screen name='Create' component={CreateScreen} />
             </Stack.Navigator>
         </NavigationContainer>
-    )
-}
+    );
+};
+``

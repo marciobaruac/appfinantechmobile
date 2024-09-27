@@ -28,7 +28,7 @@ export const LoginScreen = ({ navigation }) => {
 
                 navigation.reset({
                     index: 0,
-                    routes: [{ name: 'Cartoes' }]
+                    routes: [{ name: 'Dashboard' }]
                 })
             } else {
                 Alert.alert('Erro', 'Usuário ou senha incorretos.');

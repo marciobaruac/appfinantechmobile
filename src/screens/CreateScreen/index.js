@@ -82,7 +82,6 @@ export const CreateScreen = ({ route, navigation }) => {
     };
 
 
-
     const dismissKeyboard = () => {
         Keyboard.dismiss();
     };

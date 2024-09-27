@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
-import { ScrollView, TouchableWithoutFeedback, Keyboard, RefreshControl, Platform } from 'react-native';
+import { ScrollView, TouchableWithoutFeedback, Keyboard, RefreshControl, Platform, View } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 
-import { Text, Container } from '../../components';
+import { Text, Container, ButtonBack } from '../../components';
 import { CardSection, SubmitButton } from '../../components/organisms';
 import API from '../../helpers/api';
 
@@ -57,8 +57,11 @@ export const CartoesScreen = ({ navigation }) => {
       }>
         <TouchableWithoutFeedback onPress={handleOutsidePress}>
           <Container align="center" padBottom="80" radius="12">
-            <Container align='center' justify='center' height={Platform.OS === 'ios' ? 85 : 80} bgColor='#0F1B28'>
-              <Text size="35" marginTop={Platform.OS === 'ios' ? 15 : 0} fontFamily="RobotoBold">Cartões</Text>
+            <Container align='center' flexDir='row' height={Platform.OS === 'ios' ? 85 : 80} bgColor='#0F1B28'>
+              <View style={{ marginLeft: 12 }}>
+                <ButtonBack onPress={() => navigation.navigate('Dashboard')} />
+              </View>
+              <Text size="35" marginLeft='50' marginTop={Platform.OS === 'ios' ? 15 : 0} fontFamily="RobotoBold">Cartões</Text>
             </Container>
 
             {Array.isArray(cartoes) && cartoes.length > 0 ? (

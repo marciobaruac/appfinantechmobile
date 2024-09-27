@@ -15,7 +15,7 @@ export const SplashScreen = ({ navigation }) => {
 
   return (
     <Container justify="center" align="center" bgColor="#0F1B28">
-      <Logo size="150" />
+      <Logo size="150" align='center' justify='center' width='150' height='150' bgColor='#0F1B28' />
 
       <Text marginTop='7' size="30" fontFamily="LatoBold">
         Smart
