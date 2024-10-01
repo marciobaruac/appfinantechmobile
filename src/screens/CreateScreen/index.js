@@ -104,6 +104,7 @@ export const CreateScreen = ({ route, navigation }) => {
 
                                 placeholder="Nome"
                                 placeholderTextColor="grey"
+                                maxLength={20}
                                 value={cartao}
                                 onChangeText={setCartao}
                             />
