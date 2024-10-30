@@ -4,7 +4,7 @@ import API from '../../../helpers/api';
 
 import { Container, IconDelete } from '../../atoms';
 
-export const ButtonDelete = ({ cartaoId, onRefresh }) => {
+export const ButtonDelete = ({ objetoId, onRefresh }) => {
 
     const handleDelete = async () => {
         Alert.alert(
@@ -20,9 +20,8 @@ export const ButtonDelete = ({ cartaoId, onRefresh }) => {
                     text: 'Deletar',
                     onPress: async () => {
                         try {
-                            console.log(cartaoId);
 
-                            const response = await API.get(`/api/cartoes/delete/${cartaoId}`);
+                            const response = await API.get(`/api/cartoes/delete/${objetoId}`);
 
                             Alert.alert('Sucesso', 'Cartão deletado com sucesso.');
 

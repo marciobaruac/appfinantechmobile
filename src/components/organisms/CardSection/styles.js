@@ -16,7 +16,8 @@ export const CardBox = styled.View`
 `;
 
 export const MarqueeText = styled(Marquee)`
-    width: 220px;
+    width: ${({ theme, width }) => (width ? `${theme.metrics.px(width)}px` : '20px')};
+    margin-left: ${({ marginLeft, theme }) => theme.metrics.px(marginLeft || 0)}px;
 `;
 
 export const Shadow = StyleSheet.create(

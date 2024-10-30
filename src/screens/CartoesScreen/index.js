@@ -57,16 +57,16 @@ export const CartoesScreen = ({ navigation }) => {
       }>
         <TouchableWithoutFeedback onPress={handleOutsidePress}>
           <Container align="center" padBottom="80" radius="12">
-            <Container align='center' flexDir='row' height={Platform.OS === 'ios' ? 85 : 80} bgColor='#0F1B28'>
+            <Container align='center' flexDir='row' height={Platform.OS === 'ios' ? 85 : 85} bgColor='#0F1B28'>
               <View style={{ marginLeft: 12 }}>
                 <ButtonBack onPress={() => navigation.navigate('Dashboard')} />
               </View>
-              <Text size="35" marginLeft='50' marginTop={Platform.OS === 'ios' ? 15 : 0} fontFamily="RobotoBold">Cartões</Text>
+              <Text size="35" marginLeft='50' marginTop={Platform.OS === 'ios' ? 15 : 15} fontFamily="RobotoBold">Cartões</Text>
             </Container>
 
             {Array.isArray(cartoes) && cartoes.length > 0 ? (
               cartoes.map((cartao) => (
-                <CardSection key={cartao.id} cartaoId={cartao.id} nome={cartao.nome} onReset={resetCard} onRefresh={onRefresh} />
+                <CardSection key={cartao.id} objetoId={cartao.id} screen='Cartoes' nome={cartao.nome} onReset={resetCard} onRefresh={onRefresh} />
               ))
             ) : (
               <Text marginTop='30' color="gray" size="18">Nenhum cartão disponível</Text>
@@ -76,7 +76,7 @@ export const CartoesScreen = ({ navigation }) => {
 
 
       </ScrollView>
-      <SubmitButton navigation={navigation} />
+      <SubmitButton screen='cartoes' navigation={navigation} />
     </>
   );
 };

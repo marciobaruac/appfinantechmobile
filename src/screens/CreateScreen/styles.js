@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
 export const Input = styled.TextInput`
     padding-left: 15px;
     padding-right: 15px;
-    width: 307hpx;
+    width: 347px;
     height: 58px;
     
 

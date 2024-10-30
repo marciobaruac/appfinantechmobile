@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components/native';
 import { Platform, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { Container, Logo, Text, IconCreditCard, IconExit } from '../../atoms';
+import { Container, Logo, Text, IconCreditCard, IconExit, IconOutlay } from '../../atoms';
 import { ButtonLogo, ButtonNotification } from '../../molecules';
 import API from '../../../helpers/api';
 
@@ -14,14 +14,20 @@ export const HeaderDashboard = ({ pressed, navigation }) => {
         {
             icon: () => <IconCreditCard size='31' />,
             label: 'Cartões de Crédito',
-            value: '1'
+            value: 'credit'
         },
         {
             icon: () => <IconExit size='31' />,
             label: 'Sair',
-            value: '2'
+            value: 'exit'
         },
     ]);
+
+    // {
+    //     icon: () => <IconOutlay size='28' justify='center' bgColor='#0F1B28' />,
+    //     label: 'Despesas',
+    //     value: 'outlay'
+    // },
 
     const theme = useTheme();
 
@@ -47,11 +53,15 @@ export const HeaderDashboard = ({ pressed, navigation }) => {
     }
 
     const handleSelectItem = (item) => {
-        if (item.value === '1') {
+        if (item.value === 'credit') {
             navigation.navigate('Cartoes');
         }
 
-        if (item.value === '2') {
+        // if (item.value === 'outlay') {
+        //     navigation.navigate('Despesas')
+        // }
+
+        if (item.value === 'exit') {
 
             handleLogout()
             navigation.navigate('Login')
@@ -76,7 +86,7 @@ export const HeaderDashboard = ({ pressed, navigation }) => {
                         items={items}
                         setOpen={setOpen}
                         setItems={setItems}
-                        showArrowIcon={false}
+                        showArrowIcon={false} export default index
 
                         placeholder={
                             <>
@@ -105,7 +115,7 @@ export const HeaderDashboard = ({ pressed, navigation }) => {
 
                         dropDownContainerStyle={{
                             width: 270,
-                            height: 110,
+                            height: 120,
                             backgroundColor: '#0F1B28',
                             borderWidth: 0,
                             borderColor: 'transparent',
@@ -122,7 +132,7 @@ export const HeaderDashboard = ({ pressed, navigation }) => {
                 )}
 
                 <Text size='18' marginTop='10' fontFamily='RobotoBold' style={{ zIndex: 1 }}>
-                    Janeiro
+                    Calendário
                 </Text>
 
                 <ButtonNotification />

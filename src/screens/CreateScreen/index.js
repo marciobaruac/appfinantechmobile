@@ -43,6 +43,7 @@ export const CreateScreen = ({ route, navigation }) => {
                 return Alert.alert('Sucesso', 'Dados do cartão foi alterado com sucesso')
 
             } catch (error) {
+
                 return Alert.alert('Erro', 'Nome do cartão já existe')
             }
         }
@@ -69,9 +70,10 @@ export const CreateScreen = ({ route, navigation }) => {
         } catch (error) {
             if (error.response && error.response.status === 400) {
 
+
                 Alert.alert('Erro', 'Já existe um cartão com este nome.');
             } else {
-                console.log(error.response.status);
+
 
                 Alert.alert('Erro', 'Ocorreu um erro inesperado.');
             }
@@ -88,9 +90,9 @@ export const CreateScreen = ({ route, navigation }) => {
 
     return (
         <Container >
-            <Container flexDir='row' bgColor='#0F1B28' height={Platform.OS === 'ios' ? 85 : 80} align='center' padLeft='10'>
+            <Container flexDir='row' bgColor='#0F1B28' height={Platform.OS === 'ios' ? 85 : 90} align='center' padLeft='10'>
                 <ButtonBack onPress={() => navigation.navigate('Cartoes')} />
-                <Text marginLeft='38' marginTop={Platform.OS === 'ios' ? 50 : 0} size='32' fontFamily='RobotoBold'>
+                <Text marginLeft='38' marginTop={Platform.OS === 'ios' ? 15 : 15} size='32' fontFamily='RobotoBold'>
                     {isEditing ? 'Editar Cartão' : 'Novo Cartão'}
                 </Text>
             </Container>
@@ -118,7 +120,7 @@ export const CreateScreen = ({ route, navigation }) => {
 
                         <ImageCartao size='328' marginTop='10' />
 
-                        <Logo marginTop='70' />
+                        <Logo marginTop='70' width='20' />
                     </Container>
 
                 </>

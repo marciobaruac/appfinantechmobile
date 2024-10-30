@@ -4,12 +4,12 @@ import { TouchableOpacity } from 'react-native'
 import { Container, IconEdit } from '../../atoms';
 import { useNavigation } from '@react-navigation/native';
 
-export const ButtonEdit = ({ cartaoId }) => {
+export const ButtonEdit = ({ objetoId }) => {
     const navigation = useNavigation()
 
     const handlePress = () => {
 
-        navigation.navigate('Create', { cartaoId: cartaoId });
+        navigation.navigate('Create', { objetoId: objetoId });
     };
 
     return (

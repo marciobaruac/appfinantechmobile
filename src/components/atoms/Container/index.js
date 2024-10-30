@@ -11,6 +11,7 @@ export const Container = styled.View`
     padding-left: ${({ padLeft, theme }) => theme.metrics.px(padLeft || 0)}px;
     margin-top: ${({ marginTop, theme }) => theme.metrics.px(marginTop || 0)}px;
     margin-left: ${({ marginLeft, theme }) => theme.metrics.px(marginLeft || 0)}px;
+    margin-right: ${({ marginRight, theme }) => theme.metrics.px(marginRight || 0)}px;
     flex-direction: ${({ flexDir }) => flexDir || 'column'};
     align-items: ${({ align }) => align || 'flex-start'};
     justify-content: ${({ justify }) => justify || 'flex-start'};
@@ -18,7 +19,5 @@ export const Container = styled.View`
     width: ${({ theme, width }) => (width ? `${theme.metrics.px(width)}px` : '100%')};
     height: ${({ theme, height }) => (height ? `${theme.metrics.px(height)}px` : '100%')};
     border-radius: ${({ radius, theme }) => radius ? `${theme.metrics.px(radius)}px` : '0px'};
-    
-
-
+    z-index: ${({ zIndex }) => zIndex || 0}
 `
