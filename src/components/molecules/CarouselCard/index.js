@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import Animated, { withTiming, useSharedValue, useAnimatedStyle } from 'react-native-reanimated';
+
 import { Container, Text } from '../../atoms';
-import { Shadow } from './style';
+import { Shadow, MarqueeText } from './style';
 import { ButtonPlusSquare } from '../ButtonPlusSquare';
-import { TouchableOpacity } from 'react-native';
 
 export const CarouselCard = ({ ...props }) => {
+
+    const [isEffect, setIsEffect] = useState(false);
+
+
+    /* Controle de animação */
+    const handlePress = () => {
+        setIsEffect(prevState => !prevState);
+    };
+
+
+    /* Formatação */
     const formatCurrency = (text) => {
         let cleaned = ('' + text).replace(/\D/g, '');
         let formatted = (cleaned / 100).toFixed(2)
@@ -13,11 +26,37 @@ export const CarouselCard = ({ ...props }) => {
         return formatted;
     };
 
+    const truncateText = (text, maxLength) => {
+        return text.length > maxLength ? text.substring(0, maxLength - 2) + ' ...' : text;
+    };
+
+
+
+
+
     return (
         <Container height='147' width='327' align='center' radius='15' style={Shadow.card} >
             <TouchableOpacity activeOpacity={1} >
                 <Container flexDir='row' align='center' height='30' width='295' justify='space-between' marginTop='10' >
-                    <Text color='black' fontFamily='RobotoBlack' size='18'>{props.nome}</Text>
+
+                    <TouchableOpacity activeOpacity={0.8} onPress={handlePress}>
+                        {props.nome.length < 11 ? (
+                            <Text fontFamily="RobotoBlack" color="black" lineHeight="50" size="18"> {props.nome} </Text>
+                        ) : (
+                            isEffect ? (
+                                <MarqueeText marginLeft='7' width='150' marqueeOnStart={true} spacing={200} speed={0.7}>
+                                    <Text fontFamily="RobotoBlack" color="black" lineHeight="50" size="18"> {props.nome} </Text>
+                                </MarqueeText>
+                            ) : (
+                                <Text fontFamily="RobotoBlack" color="black" lineHeight="50" size="18">
+                                    {truncateText(props.nome, 11)}
+                                </Text>
+                            )
+                        )}
+                    </TouchableOpacity>
+
+
+                    {/* <Text color='black' fontFamily='RobotoBlack' size='18'>{truncateText(props.nome, 11)}</Text> */}
                     <ButtonPlusSquare objetoId={props.objetoId} />
                 </Container>
                 <Container width='295' justify='center' height='30' marginTop='5'>

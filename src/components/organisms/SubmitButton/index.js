@@ -4,6 +4,9 @@ import { Container } from '../../atoms';
 
 export const SubmitButton = ({ navigation, ...props }) => {
 
+    let cartaoId = props.cartaoId
+
+
     return (
 
         <Container height='15'>
@@ -13,7 +16,7 @@ export const SubmitButton = ({ navigation, ...props }) => {
             ) : null}
 
             {props.screen === 'despesas' ? (
-                <ButtonAdd onPress={() => navigation.navigate('CreateDespesas')} />
+                <ButtonAdd onPress={() => navigation.navigate('CreateDespesas', { cartaoId })} />
 
             ) : null}
 

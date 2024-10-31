@@ -1,4 +1,6 @@
 import { StyleSheet } from "react-native";
+import { Marquee } from "@animatereactnative/marquee";
+import styled from "styled-components";
 
 export const Shadow = StyleSheet.create(
     {
@@ -14,3 +16,8 @@ export const Shadow = StyleSheet.create(
         }
     }
 )
+
+export const MarqueeText = styled(Marquee)`
+    width: ${({ theme, width }) => (width ? `${theme.metrics.px(width)}px` : '20px')};
+    margin-left: ${({ marginLeft, theme }) => theme.metrics.px(marginLeft || 0)}px;
+`;

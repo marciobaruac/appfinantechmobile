@@ -55,7 +55,7 @@ export const Dashboard = () => {
     ];
 
     return (
-        <View style={styles.container}>
+        <View >
             <Pressable
                 style={styles.header}
                 onPressIn={() => setPressed(true)}
@@ -70,7 +70,7 @@ export const Dashboard = () => {
                 sections={sections}
                 keyExtractor={(item, index) => item.key + index}
                 renderItem={({ section }) => (
-                    <Container bgColor='#F8F8F8' height='190'>
+                    <Container bgColor='#F8F8F8' height='175'>
                         <CarouselField cartoes={cartoes} despesas={despesas} />
                     </Container>
                 )}

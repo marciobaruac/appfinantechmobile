@@ -94,7 +94,7 @@ export const DespesasScreen = ({ navigation }) => {
                             despesas.map((despesa) => (
 
                                 < CardSection key={despesa.id}
-                                    categoria={categorias.find(categoria => categoria.id === despesa.dreconta_id)}
+                                    categoria={categorias.find(categoria => categoria.id === despesa.dreconta_id) || {}} cartaoId={cartaoId}
                                     objetoId={despesa.id} screen='Despesas' nome={despesa.referencia} valor={despesa.valor_integral}
                                     emissao={despesa.data_emissao} onReset={resetCard} onRefresh={onRefresh} />
                             ))
@@ -106,7 +106,7 @@ export const DespesasScreen = ({ navigation }) => {
 
 
             </ScrollView>
-            <SubmitButton screen='despesas' navigation={navigation} />
+            <SubmitButton cartaoId={cartaoId} screen='despesas' navigation={navigation} />
         </>
     );
 };

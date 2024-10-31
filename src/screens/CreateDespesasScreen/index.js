@@ -6,9 +6,12 @@ import moment from 'moment-timezone'
 import API from '../../helpers/api';
 import { Container, Text, ButtonBack, Logo, InputList, ListImages } from '../../components';
 import { Input, ButtonAdd, styles } from './styles';
+import { useRoute } from '@react-navigation/native';
 
 export const CreateDespesasScreen = ({ route, navigation }) => {
+    const cartaoId = route.params?.cartaoId
     const { despesaId } = route.params || {};
+
     const [isEditing, setIsEditing] = useState(false);
 
     const [date, setDate] = useState(new Date());
@@ -33,11 +36,12 @@ export const CreateDespesasScreen = ({ route, navigation }) => {
         "data_vencimento": "2024-11-01",
         "fornecedor_id": 1,
         "data_emissao": dateEmissao,
+        "data_pagamento": dateEmissao, // temporariamente terá dateEmissão como valor
         "forma_pagamento": 1,
         "dreconta_id": categoriaSelecionada,
         "contabilId": 1,
         "empresa_id": 1,
-        "cartao_id": 2
+        "cartao_id": cartaoId
     }
 
     useEffect(() => {

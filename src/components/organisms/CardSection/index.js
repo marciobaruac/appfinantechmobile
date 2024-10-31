@@ -14,6 +14,7 @@ export const CardSection = ({ objetoId, ...props }) => {
 
     const moveEffect = useSharedValue(0);
 
+
     /* Efeito carregamento de página */
 
     useEffect(() => {
@@ -34,10 +35,8 @@ export const CardSection = ({ objetoId, ...props }) => {
     };
 
     function getImagemNome() {
-        return (props.categoria.categoria_imagem) ? (
+        return (props.categoria.categoria_imagem) &&
             props.categoria.categoria_imagem.nome
-
-        ) : null
 
     }
 
@@ -92,8 +91,8 @@ export const CardSection = ({ objetoId, ...props }) => {
                                 align="center"
                                 style={Shadow.card}
                             >
-                                <Container flexDir="row" align="center" width="255" radius="15" marginLeft="10">
-                                    <ListFlags />
+                                <Container flexDir="row" align="center" width="240" radius="15" marginLeft="20">
+                                    {/* <ListFlags /> */}
 
                                     <TouchableOpacity activeOpacity={0.8} onPress={handlePress}>
                                         {props.nome.length < 16 ? (
@@ -164,7 +163,7 @@ export const CardSection = ({ objetoId, ...props }) => {
                                                         </MarqueeText>
                                                     ) : (
                                                         <Text fontFamily="RobotoMedium" color="black" lineHeight="50" size="20" marginLeft='4'>
-                                                            {truncateText(props.categoria.nome, 10)}
+                                                            {truncateText(props.categoria.nome || "N/A", 10)}
                                                         </Text>
                                                     )}
                                                 </TouchableOpacity>
@@ -179,7 +178,7 @@ export const CardSection = ({ objetoId, ...props }) => {
                                                         </MarqueeText>
                                                     ) : (
                                                         <Text fontFamily="RobotoMedium" color="black" lineHeight="50" size="15" marginLeft='6'>
-                                                            {truncateText(props.nome, 13)}
+                                                            {truncateText(props.nome || "N/A", 13)}
                                                         </Text>
                                                     )}
                                                 </TouchableOpacity>
