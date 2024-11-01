@@ -1,32 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableWithoutFeedback, Keyboard, Alert, Platform } from 'react-native';
+import { TouchableWithoutFeedback, Keyboard, Alert, Platform, View } from 'react-native';
 import API from '../../helpers/api';
 
 import { Container, Text, ButtonBack, ImageCartao, Logo } from '../../components';
 import { Input, ButtonAdd, styles } from './styles';
 
 export const CreateScreen = ({ route, navigation }) => {
-    const { cartaoId } = route.params || {};
-    const [cartao, setCartao] = useState('');
+    const cartaoId = route.params?.objetoId;
+    const [cartao, setCartao] = useState(route.params?.cartao || '');
+
     const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
         if (cartaoId) {
 
             setIsEditing(true);
-            fetchCartaoData(cartaoId);
         }
     }, [cartaoId]);
-
-    const fetchCartaoData = async (id) => {
-        try {
-            const response = await API.get(`/api/cartoes/edit/${id}`);
-            setCartao(response.data.response.nome);
-        } catch (error) {
-            console.error('Erro ao buscar os dados do cartão:', error);
-            Alert.alert('Erro', 'Não foi possível carregar os dados do cartão.');
-        }
-    };
 
 
     const handleCreateOrEdit = async () => {
@@ -58,7 +48,7 @@ export const CreateScreen = ({ route, navigation }) => {
             }
 
             if (!isEditing) {
-                await API.post(`/api/cartoes/create`, { nome: cartao });
+                await API.post("/api/cartoes/create", { nome: cartao });
                 Alert.alert('Sucesso', 'Cartão criado com sucesso.');
 
                 navigation.navigate('Cartoes', { shouldRefresh: true });
@@ -89,15 +79,18 @@ export const CreateScreen = ({ route, navigation }) => {
     };
 
     return (
-        <Container >
-            <Container flexDir='row' bgColor='#0F1B28' height={Platform.OS === 'ios' ? 85 : 90} align='center' padLeft='10'>
-                <ButtonBack onPress={() => navigation.navigate('Cartoes')} />
-                <Text marginLeft='38' marginTop={Platform.OS === 'ios' ? 15 : 15} size='32' fontFamily='RobotoBold'>
-                    {isEditing ? 'Editar Cartão' : 'Novo Cartão'}
-                </Text>
-            </Container>
+        <TouchableWithoutFeedback onPress={dismissKeyboard}>
+            <Container >
+                <Container flexDir='row' bgColor='#0F1B28' height='70' padLeft='10'>
+                    <View style={{ marginTop: 7 }}>
+                        <ButtonBack onPress={() => navigation.navigate('Cartoes')} />
+                    </View>
+                    <Text marginLeft='38' size='32' fontFamily='RobotoBold'>
+                        {isEditing ? 'Editar Cartão' : 'Novo Cartão'}
+                    </Text>
+                </Container>
 
-            <TouchableWithoutFeedback onPress={dismissKeyboard}>
+
                 <>
                     <Container align='center' padTop='50' >
 
@@ -124,7 +117,8 @@ export const CreateScreen = ({ route, navigation }) => {
                     </Container>
 
                 </>
-            </TouchableWithoutFeedback>
-        </Container>
+
+            </Container>
+        </TouchableWithoutFeedback>
     );
 };

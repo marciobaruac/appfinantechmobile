@@ -163,7 +163,7 @@ export const CardSection = ({ objetoId, ...props }) => {
                                                         </MarqueeText>
                                                     ) : (
                                                         <Text fontFamily="RobotoMedium" color="black" lineHeight="50" size="20" marginLeft='4'>
-                                                            {truncateText(props.categoria.nome || "N/A", 10)}
+                                                            {truncateText(props.categoria.nome || " ", 10)}
                                                         </Text>
                                                     )}
                                                 </TouchableOpacity>
@@ -178,7 +178,7 @@ export const CardSection = ({ objetoId, ...props }) => {
                                                         </MarqueeText>
                                                     ) : (
                                                         <Text fontFamily="RobotoMedium" color="black" lineHeight="50" size="15" marginLeft='6'>
-                                                            {truncateText(props.nome || "N/A", 13)}
+                                                            {truncateText(props.nome || " ", 13)}
                                                         </Text>
                                                     )}
                                                 </TouchableOpacity>
@@ -204,7 +204,7 @@ export const CardSection = ({ objetoId, ...props }) => {
 
             {showOptions && (
                 <Container width='70' position='absolute' left='255'>
-                    <CardOptions objetoId={objetoId} onRefresh={props.onRefresh} />
+                    <CardOptions objetoId={objetoId} onRefresh={props.onRefresh} screen={props.screen} />
                 </Container>
             )}
         </Container>

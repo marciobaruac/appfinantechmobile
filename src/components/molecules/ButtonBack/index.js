@@ -6,7 +6,7 @@ import { ButtonBox } from './styles';
 
 export const ButtonBack = ({ onPress }) => {
     return (
-        <ButtonBox style={{ marginTop: Platform.OS === 'ios' ? 20 : 15 }} width='43' height='32' justify='center' align='center' onPress={onPress}>
+        <ButtonBox width='43' height='32' justify='center' align='center' onPress={onPress}>
             <Icon name="chevron-left" size={40} color='#FF9C00' />
         </ButtonBox>
     );

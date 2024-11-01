@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableWithoutFeedback, Keyboard, Alert, Platform, TouchableOpacity } from 'react-native';
+import { TouchableWithoutFeedback, Keyboard, Alert, View, TouchableOpacity } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment-timezone'
 
@@ -180,9 +180,11 @@ export const CreateDespesasScreen = ({ route, navigation }) => {
     return (
         <TouchableWithoutFeedback onPress={dismissKeyboard}>
             <Container >
-                <Container flexDir='row' bgColor='#0F1B28' height={Platform.OS === 'ios' ? 85 : 90} align='center' padLeft='10'>
-                    <ButtonBack onPress={() => navigation.navigate('Despesas')} />
-                    <Text marginLeft='25' marginTop={Platform.OS === 'ios' ? 15 : 15} size='32' fontFamily='RobotoBold'>
+                <Container flexDir='row' bgColor='#0F1B28' height='70' padLeft='10'>
+                    <View style={{ marginTop: 7 }}>
+                        <ButtonBack onPress={() => navigation.navigate('Despesas')} />
+                    </View>
+                    <Text marginLeft='25' size='32' fontFamily='RobotoBold'>
                         {isEditing ? 'Editar Despesa' : 'Nova Despesa'}
                     </Text>
                 </Container>

@@ -55,8 +55,6 @@ export const CarouselCard = ({ ...props }) => {
                         )}
                     </TouchableOpacity>
 
-
-                    {/* <Text color='black' fontFamily='RobotoBlack' size='18'>{truncateText(props.nome, 11)}</Text> */}
                     <ButtonPlusSquare objetoId={props.objetoId} />
                 </Container>
                 <Container width='295' justify='center' height='30' marginTop='5'>

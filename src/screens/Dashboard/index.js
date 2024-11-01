@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { SectionList, RefreshControl, Platform, Pressable, View, StyleSheet } from 'react-native';
+import { SectionList, RefreshControl, Platform, Pressable, View, StyleSheet, TouchableWithoutFeedback, Dimensions } from 'react-native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 import { CarouselField, Container } from '../../components';
@@ -7,8 +7,12 @@ import { HeaderDashboard } from '../../components';
 import API from '../../helpers/api';
 
 export const Dashboard = () => {
+
+    const height = Dimensions.get('window').height
+
     const [pressed, setPressed] = useState(false);
     const navigation = useNavigation();
+    const [open, setOpen] = useState(false);
 
     const [cartoes, setCartoes] = useState([]);
     const [despesas, setDespesas] = useState([]);
@@ -55,29 +59,34 @@ export const Dashboard = () => {
     ];
 
     return (
-        <View >
-            <Pressable
-                style={styles.header}
-                onPressIn={() => setPressed(true)}
-                onPressOut={() => setPressed(false)}
-            >
-                <Container zIndex='1' align='center' height='100' bgColor='#0F1B28'>
-                    <HeaderDashboard pressed={pressed} navigation={navigation} />
-                </Container>
-            </Pressable>
-
-            <SectionList
-                sections={sections}
-                keyExtractor={(item, index) => item.key + index}
-                renderItem={({ section }) => (
-                    <Container bgColor='#F8F8F8' height='175'>
-                        <CarouselField cartoes={cartoes} despesas={despesas} />
+        <TouchableWithoutFeedback onPress={() => {
+            setPressed(false);
+            setOpen(false); // Fecha o dropdown ao clicar fora
+        }}>
+            <View style={{ backgroundColor: 'white', height: height }}>
+                <Pressable
+                    style={styles.header}
+                    onPressIn={() => setPressed(true)}
+                    onPressOut={() => setPressed(false)}
+                >
+                    <Container zIndex='1' align='center' height='70' bgColor='#0F1B28'>
+                        <HeaderDashboard pressed={pressed} open={open} setOpen={setOpen} navigation={navigation} />
                     </Container>
-                )}
-                refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-                contentContainerStyle={styles.listContent}
-            />
-        </View>
+                </Pressable>
+
+                <SectionList
+                    sections={sections}
+                    keyExtractor={(item, index) => item.key + index}
+                    renderItem={({ section }) => (
+                        <Container bgColor='#F8F8F8' height='157'>
+                            <CarouselField cartoes={cartoes} despesas={despesas} />
+                        </Container>
+                    )}
+                    refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+                    contentContainerStyle={styles.listContent}
+                />
+            </View>
+        </TouchableWithoutFeedback>
     );
 };
 
@@ -89,6 +98,6 @@ const styles = StyleSheet.create({
         zIndex: 1,
     },
     listContent: {
-        marginTop: 110, // Ajuste conforme a altura do Header
+        marginTop: 82, // Ajuste conforme a altura do Header
     },
 });

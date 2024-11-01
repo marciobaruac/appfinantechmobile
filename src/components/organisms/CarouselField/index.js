@@ -20,7 +20,7 @@ export const CarouselField = ({ cartoes, despesas }) => {
     });
 
     return (
-        <Container marginTop='10'>
+        <Container >
             <Carousel
                 mode='parallax'
                 loop={false}

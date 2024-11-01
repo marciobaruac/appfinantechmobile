@@ -10,9 +10,11 @@ export const navigationRef = createNavigationContainerRef();
 export const Routes = () => {
     const Stack = createNativeStackNavigator();
 
+    // #0F1B28
+
     return (
         <NavigationContainer ref={navigationRef}>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Navigator screenOptions={{ headerShown: false, statusBarColor: '#0F1B28' }}>
                 <Stack.Screen name='Splash' component={SplashScreen} />
                 <Stack.Screen name='Login' component={LoginScreen} />
                 <Stack.Screen name='Dashboard' component={Dashboard} />

@@ -83,11 +83,11 @@ export const DespesasScreen = ({ navigation }) => {
             }>
                 <TouchableWithoutFeedback onPress={handleOutsidePress}>
                     <Container align="center" padBottom="80" radius="12">
-                        <Container align='center' flexDir='row' height={Platform.OS === 'ios' ? 85 : 85} bgColor='#0F1B28'>
-                            <View style={{ marginLeft: 12 }}>
+                        <Container flexDir='row' height='70' bgColor='#0F1B28'>
+                            <View style={{ marginLeft: 12, marginTop: 8 }}>
                                 <ButtonBack onPress={() => navigation.navigate('Dashboard')} />
                             </View>
-                            <Text size="35" marginLeft='40' marginTop={Platform.OS === 'ios' ? 15 : 10} fontFamily="RobotoBold">Despesas</Text>
+                            <Text size="35" marginLeft='40' fontFamily="RobotoBold">Despesas</Text>
                         </Container>
 
                         {Array.isArray(despesas) && despesas.length > 0 ? (
